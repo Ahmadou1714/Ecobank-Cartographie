@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMy4cQbb2s/6A2UuJ3sE1e4e9/sH7mV5nBj5Y" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="style.css" />
+
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script defer src="script.js"></script>
+
+  <title>Ecobank Cartographie</title>
+</head>
+
+<body>
+  <div class="sidebar">
+    <img src="logo.png" alt="Logo Ecobank" class="logo" />
+    <form class="form hidden" aria-label="Formulaire d'agence et Xpress">
+      <div class="form__row">
+        <label class="form__label" for="type">Type</label>
+        <select id="type" class="form__input">
+          <option value="agence">Agence</option>
+          <option value="xpress">Points Xpress</option>
+        </select>
+      </div>
+      <div class="form__row">
+        <label class="form__label" for="nom">Nom</label>
+        <input id="nom" class="form__input" placeholder="Nom de l'agence" />
+      </div>
+      <div class="form__row">
+        <label class="form__label" for="adresse">Adresse</label>
+        <input id="adresse" class="form__input" placeholder="Adresse complète" />
+      </div>
+      <div class="form__row">
+        <label class="form__label" for="services">Services offerts</label>
+        <select id="services" class="form__input">
+          <option value="compte">Ouverture de compte</option>
+          <option value="pret">Prêt personnel</option>
+          <option value="carte">Carte bancaire</option>
+          <option value="transfert">Transfert d'argent</option>
+          <option value="conseil">Conseil financier</option>
+        </select>
+      </div>
+      <div class="form__row">
+        <label class="form__label" for="horaire">Horaire</label>
+        <select id="horaire" class="form__input">
+          <option value="8-12">8:00 - 12:00</option>
+          <option value="12-16">12:00 - 16:00</option>
+          <option value="16-20">16:00 - 20:00</option>
+          <option value="20-24">20:00 - 24:00</option>
+        </select>
+      </div>
+      <div class="form__btn-group">
+        <button type="submit" class="form__btn">SOUMETTRE</button>
+        <!-- <button type="button" aria-label="Modifier" class="form__btn-modify"><i
+            class="fas fa-pen-to-square"></i></button>
+        <button type="button" aria-label="Supprimer" class="form__btn-delete"><i class="fas fa-trash"></i></button> -->
+      </div>
+    </form>
+    <p class="copyright">
+      &copy; Copyright by <a class="link" target="_blank" href="https://www.ecobank.com/">Ecobank</a>
+    </p>
+  </div>
+
+  <div id="map"></div>
+</body>
+
+</html>
