@@ -235,6 +235,29 @@ class App {
         'name',
         menu.classList.contains('hidden') ? 'grid' : 'close'
       );
+
+    if (!menu.classList.contains('hidden')) {
+      document.body.addEventListener(
+        'click',
+        this._closeMenuOnClickOutside.bind(this)
+      );
+    } else {
+      document.body.removeEventListener(
+        'click',
+        this._closeMenuOnClickOutside.bind(this)
+      );
+    }
+  }
+
+  _closeMenuOnClickOutside(e) {
+    if (!menu.contains(e.target) && !toggleMenu.contains(e.target)) {
+      menu.classList.add('hidden');
+      document.getElementById('menu-icon').setAttribute('name', 'grid');
+      document.body.removeEventListener(
+        'click',
+        this._closeMenuOnClickOutside.bind(this)
+      );
+    }
   }
 
   _setLocalStorage() {
