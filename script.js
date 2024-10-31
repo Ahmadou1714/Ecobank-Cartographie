@@ -8,12 +8,13 @@ const inputService = document.querySelector('.form__input--service');
 const inputHoraire = document.querySelector('.form__input--horaire');
 const container = document.querySelector('.container');
 const searchInput = document.getElementById('recherche');
-const sidebar = document.querySelector('.sidebar');
 const toggleMenu = document.querySelector('.toggleMenu');
 const menu = document.querySelector('.menu');
 const exportBtn = document.getElementById('exportBtn');
 const importBtn = document.getElementById('importBtn');
 const searchBtn = document.querySelector('.form__btn');
+const boutonEdit = document.querySelector('.btn--edit');
+const boutonDelete = document.querySelector('.btn--delete');
 
 class App {
   #map;
@@ -31,6 +32,7 @@ class App {
     exportBtn.addEventListener('click', this._exportData.bind(this));
     importBtn.addEventListener('change', this._importData.bind(this));
     searchInput.addEventListener('input', this._filterLocations.bind(this));
+    searchBtn.addEventListener('click', this._filterLocations.bind(this));
   }
 
   _getPosition() {
@@ -73,13 +75,17 @@ class App {
     inputNom.focus();
   }
 
-  _hideForm() {
-    form.classList.add('hidden');
-    form.reset();
-    setTimeout(() => {
-      form.style.display = 'grid';
-    }, 500);
+  reset() {
+    inputNom.value = inputAdresse.value = '';
   }
+
+  // _hideForm() {
+  //   form.classList.add('hidden');
+  //   form.reset();
+  //   setTimeout(() => {
+  //     form.style.display = 'grid';
+  //   }, 500);
+  // }
 
   _newAgenceXpress(e) {
     e.preventDefault();
@@ -118,7 +124,7 @@ class App {
     this.#locations.push(location);
     this._renderBanqueMarker(location);
     this._renderBanque(location);
-    this._hideForm();
+    // this._hideForm();
     this._setLocalStorage();
   }
 
@@ -317,11 +323,8 @@ class App {
         (query.includes('xpress') && locationType === 'xpress') ||
         (!query.includes('agence') && !query.includes('xpress'));
 
-      if (matchesName && matchesType) {
-        locationContainer.style.display = 'flex';
-      } else {
-        locationContainer.style.display = 'none';
-      }
+      locationContainer.style.display =
+        matchesName && matchesType ? 'flex' : 'none';
     });
   }
 }
@@ -356,4 +359,13 @@ const app = new App();
 searchBtn.addEventListener('click', function () {
   searchInput.focus();
   app._filterLocations();
+});
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  form.classList.add('hidden');
+  setTimeout(() => {
+    form.style.display = 'grid';
+    form.reset();
+  }, 500);
 });
