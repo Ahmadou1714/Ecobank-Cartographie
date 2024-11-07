@@ -1,11 +1,12 @@
-.container {
+.form {
   margin: 0 auto;
+  margin-bottom: 5rem;
 }
 
 @media screen and (max-width: 425px) {
   .sidebar {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 20%;
     padding: 0.5rem;
   }
@@ -13,9 +14,12 @@
   #map {
     width: 80%;
   }
+  .location {
+    width: 40%;
+  }
 
   .location-container {
-    width: 100%;
+    width: 60%;
     padding: 0.5rem;
     box-sizing: border-box;
   }
@@ -42,121 +46,15 @@
 }
 
 @media screen and (max-width: 768px) {
-  .container {
-    width: 70%;
+  .form {
+    width: 100%;
   }
 }
 
-.sidebar {
-  padding: 1rem;
-  overflow-x: hidden;
-}
-
-#map {
-  width: auto;
-}
-
-.form {
-  width: 60%;
-  grid-template-columns: 1fr;
-}
-
-.form__input {
-  margin-top: 0;
-}
-
-.form__label {
-  margin-bottom: 1rem;
-}
-
-.sidebar-right {
-  right: 0%;
-}
-
-.search-overlay {
-  top: 5%;
-}
-
-.search-bar-map {
-  width: auto;
-  position: absolute;
-  left: 30%;
-}
-
-.search-bar-map button {
-  top: 7%;
-}
-
-.location__details-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.location__details {
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.location__actions {
-  flex-direction: row;
-  justify-content: space-around;
-  margin-bottom: 2rem;
-}
-
-.location__actions .btn {
-  padding: 0.5rem 1rem;
-}
-
-.form__btn {
-  margin-bottom: 5rem;
-}
-
-.location-container {
-  width: 60%;
-  padding: 0.2rem;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-}
-
-.marker {
-  padding: 0.5rem;
-  font-size: 1rem;
-}
-
-.popup {
-  font-size: 12px;
-}
-
-.popup .popup-content-agence,
-.popup .popup-content-xpress {
-  gap: 4px;
-}
-
-.custom-icon {
-  gap: 0.5rem;
-}
-
-.icon-agence,
-.icon-xpress {
-  font-size: 2rem;
-}
-
-.location__icon ion-icon {
-  font-size: 16px;
-}
-
-.modal {
-  padding: 1.5rem;
-}
-
-.form {
-  width: 73%;
-}
-
 @media screen and (max-width: 1024px) {
+  .form {
+    width: 70%;
+  }
   .sidebar {
     width: 30rem;
     overflow-x: hidden;
@@ -171,7 +69,7 @@
   }
 
   .location {
-    width: 85%;
+    width: 20%;
   }
 
   .location__title {
@@ -180,10 +78,10 @@
   }
 
   .location-container {
-    width: 90%;
+    width: 30%;
     display: flex;
     justify-content: space-around;
-    gap: 0%;
+    gap: 2%;
     align-items: center;
     margin-bottom: 1rem;
   }
@@ -196,10 +94,6 @@
   .search-overlay {
     width: 25%;
   }
-
-  .form {
-    width: 98%;
-  }
 }
 
 @media screen and (max-width: 1440px) {
@@ -211,12 +105,30 @@
     width: 70%;
   }
 
+  .location {
+    width: 100%;
+  }
+
+  .location-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    /* gap: 10%; */
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
   .search-overlay {
     left: 70%;
   }
 }
 
 @media screen and (max-width: 2560px) {
+  .location-container {
+    display: flex;
+    flex-direction: row;
+    width: 98%;
+  }
   #map {
     width: 80%;
   }
