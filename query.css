@@ -33,110 +33,115 @@
   .container {
     width: 70%;
   }
-  .sidebar {
-    padding: 1rem;
-    overflow-x: hidden;
-  }
-  #map {
-    width: auto;
-  }
+}
 
-  .form {
-    width: 60%;
-    grid-template-columns: 1fr;
-  }
+.sidebar {
+  padding: 1rem;
+  overflow-x: hidden;
+}
 
-  .form__input {
-    margin-top: 0;
-  }
+#map {
+  width: auto;
+}
 
-  .form__label {
-    margin-bottom: 1rem;
-  }
+.form {
+  width: 60%;
+  grid-template-columns: 1fr;
+}
 
-  .sidebar-right {
-    right: 0%;
-  }
+.form__input {
+  margin-top: 0;
+}
 
-  .search-overlay {
-    top: 5%;
-  }
+.form__label {
+  margin-bottom: 1rem;
+}
 
-  .search-bar-map {
-    width: auto;
-    position: absolute;
-    left: 30%;
-  }
+.sidebar-right {
+  right: 0%;
+}
 
-  .search-bar-map button {
-    top: 7%;
-  }
-  .location__details-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-  }
+.search-overlay {
+  top: 5%;
+}
 
-  .location__details {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+.search-bar-map {
+  width: auto;
+  position: absolute;
+  left: 30%;
+}
 
-  .location__actions {
-    flex-direction: row;
-    justify-content: space-around;
-    margin-bottom: 2rem;
-  }
+.search-bar-map button {
+  top: 7%;
+}
 
-  .location__actions .btn {
-    padding: 0.5rem 1rem;
-  }
-  .form__btn {
-    margin-bottom: 5rem;
-  }
-  .location-container {
-    width: 60%;
-    padding: 0.2rem;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
+.location__details-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
 
-  .marker {
-    padding: 0.5rem;
-    font-size: 1rem;
-  }
+.location__details {
+  flex-direction: column;
+  gap: 0.5rem;
+}
 
-  .popup {
-    font-size: 12px;
-  }
+.location__actions {
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
 
-  .popup .popup-content-agence,
-  .popup .popup-content-xpress {
-    gap: 4px;
-  }
+.location__actions .btn {
+  padding: 0.5rem 1rem;
+}
 
-  .custom-icon {
-    gap: 0.5rem;
-  }
+.form__btn {
+  margin-bottom: 5rem;
+}
 
-  .icon-agence,
-  .icon-xpress {
-    font-size: 2rem;
-  }
+.location-container {
+  width: 60%;
+  padding: 0.2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
 
-  .location__icon ion-icon {
-    font-size: 16px;
-  }
+.marker {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
 
-  .modal {
-    padding: 1.5rem;
-  }
+.popup {
+  font-size: 12px;
+}
 
-  .form {
-    width: 73%;
-  }
+.popup .popup-content-agence,
+.popup .popup-content-xpress {
+  gap: 4px;
+}
+
+.custom-icon {
+  gap: 0.5rem;
+}
+
+.icon-agence,
+.icon-xpress {
+  font-size: 2rem;
+}
+
+.location__icon ion-icon {
+  font-size: 16px;
+}
+
+.modal {
+  padding: 1.5rem;
+}
+
+.form {
+  width: 73%;
 }
 
 @media screen and (max-width: 1024px) {
@@ -161,6 +166,7 @@
     font-size: 1.8rem;
     text-align: center;
   }
+
   .location-container {
     width: 90%;
     display: flex;
