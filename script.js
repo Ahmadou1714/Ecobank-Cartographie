@@ -19,7 +19,7 @@ const boutonDelete = document.querySelector('.btn--delete');
 class App {
   #map;
   #mapEvent;
-  #mapZoomLevel = 18;
+  #mapZoomLevel = 17;
   #locations = [];
 
   constructor() {

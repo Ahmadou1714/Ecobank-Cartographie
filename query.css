@@ -1,61 +1,64 @@
-/* Styles pour les écrans de 425px */
+.container {
+  margin: 0 auto;
+}
+
 @media screen and (max-width: 425px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+  }
+
   .sidebar {
     width: 30%;
-    padding: 0.2rem;
+    padding: 0.5rem;
   }
+
   #map {
     width: 70%;
   }
-  .location-container {
-    width: 100%;
-    padding: 0.2rem;
-    box-sizing: border-box;
-  }
-  .form {
-    grid-template-columns: 1fr;
-  }
-  .search-overlay {
-    display: none;
-  }
-  .sidebar .search-overlay {
-    display: block;
-    position: static;
-    width: 100%;
-    margin-top: 1rem;
-  }
-}
 
-/* Styles pour les écrans de 375px */
-@media screen and (max-width: 375px) {
-  .sidebar {
-    width: 25%;
-    padding: 0.2rem;
-  }
-  #map {
-    width: 75%;
-  }
   .location-container {
     width: 100%;
-    padding: 0.2rem;
+    padding: 0.5rem;
     box-sizing: border-box;
   }
+
   .form {
     grid-template-columns: 1fr;
   }
+
   .search-overlay {
     display: none;
   }
+
   .sidebar .search-overlay {
     display: block;
+    position: relative;
     width: 100%;
     margin-top: 1rem;
+    padding: 0.5rem;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    text-align: center;
+    left: 0;
+  }
+
+  .sidebar .search-bar-map {
+    width: 100%;
+    position: static;
+    left: auto;
+  }
+
+  .sidebar .search-bar-map button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0.5rem;
   }
 }
 
 @media screen and (max-width: 768px) {
   .container {
-    margin: 0 auto;
     width: 70%;
   }
   .sidebar {
@@ -161,7 +164,6 @@
 
   .form {
     width: 73%;
-    margin: 0 auto;
   }
 }
 
@@ -211,10 +213,6 @@
 }
 
 @media screen and (max-width: 1440px) {
-  .search-overlay {
-    left: 80%;
-  }
-
   .sidebar {
     width: 84.3rem;
   }
@@ -229,10 +227,6 @@
 }
 
 @media screen and (max-width: 2560px) {
-  .container {
-    margin: 0 auto;
-  }
-
   #map {
     width: 80%;
   }
