@@ -1,12 +1,18 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .form {
   margin: 0 auto;
   margin-bottom: 5rem;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 375px) {
   .sidebar {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 20%;
     padding: 0.5rem;
   }
@@ -19,9 +25,18 @@
   }
 
   .location-container {
-    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    width: 70%;
     padding: 0.5rem;
     box-sizing: border-box;
+  }
+
+  .location__details span {
+    font-size: 2rem;
   }
 
   .form {
@@ -45,9 +60,55 @@
   }
 }
 
+@media screen and (max-width: 425px) {
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 20%; /* Réduire la largeur de la sidebar */
+    padding: 0.5rem;
+  }
+
+  #map {
+    width: 80%; /* Augmenter la largeur de la carte */
+  }
+  .location {
+    width: 40%;
+  }
+
+  .location-container {
+    width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+  }
+
+  .form {
+    grid-template-columns: 1fr;
+  }
+
+  .search-overlay {
+    display: none;
+  }
+
+  .sidebar .form {
+    width: 90%; /* Réduire la largeur du formulaire dans la sidebar */
+  }
+
+  .sidebar .location__details {
+    font-size: 0.8rem; /* Réduire la taille de la police des détails de localisation */
+  }
+
+  .sidebar .location__actions .btn {
+    padding: 0.3rem 0.5rem; /* Réduire la taille des boutons dans la sidebar */
+  }
+}
+
 @media screen and (max-width: 768px) {
   .form {
     width: 100%;
+  }
+
+  .search-bar-map {
+    right: -10%;
   }
 }
 
