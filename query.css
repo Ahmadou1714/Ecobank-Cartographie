@@ -1,4 +1,4 @@
-/* MEDIA QUERIES */
+/* Styles pour les écrans de 425px */
 @media screen and (max-width: 425px) {
   .sidebar {
     width: 30%;
@@ -10,13 +10,23 @@
   .location-container {
     width: 100%;
     padding: 0.2rem;
+    box-sizing: border-box;
   }
   .form {
     grid-template-columns: 1fr;
   }
-  /* Ajoutez d'autres styles ici */
+  .search-overlay {
+    display: none;
+  }
+  .sidebar .search-overlay {
+    display: block;
+    position: static;
+    width: 100%;
+    margin-top: 1rem;
+  }
 }
 
+/* Styles pour les écrans de 375px */
 @media screen and (max-width: 375px) {
   .sidebar {
     width: 25%;
@@ -28,23 +38,36 @@
   .location-container {
     width: 100%;
     padding: 0.2rem;
+    box-sizing: border-box;
   }
   .form {
     grid-template-columns: 1fr;
   }
-  /* Ajoutez d'autres styles ici */
+  .search-overlay {
+    display: none;
+  }
+  .sidebar .search-overlay {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+  }
 }
 
 @media screen and (max-width: 768px) {
+  .container {
+    margin: 0 auto;
+    width: 70%;
+  }
   .sidebar {
-    width: 40%;
     padding: 1rem;
+    overflow-x: hidden;
   }
   #map {
-    width: 70%;
+    width: auto;
   }
 
   .form {
+    width: 60%;
     grid-template-columns: 1fr;
   }
 
@@ -70,6 +93,9 @@
     left: 30%;
   }
 
+  .search-bar-map button {
+    top: 7%;
+  }
   .location__details-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -89,8 +115,13 @@
   .location__actions .btn {
     padding: 0.5rem 1rem;
   }
-
+  .form__btn {
+    margin-bottom: 5rem;
+  }
   .location-container {
+    width: 60%;
+    padding: 0.2rem;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -126,6 +157,11 @@
 
   .modal {
     padding: 1.5rem;
+  }
+
+  .form {
+    width: 73%;
+    margin: 0 auto;
   }
 }
 
@@ -167,6 +203,10 @@
 
   .search-overlay {
     width: 25%;
+  }
+
+  .form {
+    width: 98%;
   }
 }
 
