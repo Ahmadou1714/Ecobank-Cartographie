@@ -6,12 +6,12 @@
   .sidebar {
     display: flex;
     flex-direction: column;
-    width: 20%; /* Réduire la largeur de la sidebar */
+    width: 20%;
     padding: 0.5rem;
   }
 
   #map {
-    width: 80%; /* Augmenter la largeur de la carte */
+    width: 80%;
   }
 
   .location-container {
@@ -29,15 +29,15 @@
   }
 
   .sidebar .form {
-    width: 90%; /* Réduire la largeur du formulaire dans la sidebar */
+    width: 90%;
   }
 
   .sidebar .location__details {
-    font-size: 0.8rem; /* Réduire la taille de la police des détails de localisation */
+    font-size: 0.8rem;
   }
 
   .sidebar .location__actions .btn {
-    padding: 0.3rem 0.5rem; /* Réduire la taille des boutons dans la sidebar */
+    padding: 0.3rem 0.5rem;
   }
 }
 
