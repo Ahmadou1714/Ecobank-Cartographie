@@ -2,13 +2,10 @@
   margin: 0 auto;
 }
 
-@media screen and (max-width: 425px) {
-  .container {
-    display: flex;
-    flex-direction: row;
-  }
-
+@media screen and (max-width: 375px) {
   .sidebar {
+    display: flex;
+    flex-direction: column;
     width: 30%;
     padding: 0.5rem;
   }
