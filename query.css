@@ -30,31 +30,6 @@
   .search-overlay {
     display: none;
   }
-
-  .sidebar .search-overlay {
-    display: block;
-    position: relative;
-    width: 100%;
-    margin-top: 1rem;
-    padding: 0.5rem;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    text-align: center;
-    left: 0;
-  }
-
-  .sidebar .search-bar-map {
-    width: 100%;
-    position: static;
-    left: auto;
-  }
-
-  .sidebar .search-bar-map button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 0.5rem;
-  }
 }
 
 @media screen and (max-width: 768px) {
