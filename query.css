@@ -24,9 +24,9 @@ body {
   .arrow {
     position: absolute;
     top: 50%;
-    right: 10%;
+    left: 80%;
     transform: translateY(-50%);
-    transition: ◀left 0.3s ease;
+    transition: left 0.3s ease;
     z-index: 1000;
   }
 
