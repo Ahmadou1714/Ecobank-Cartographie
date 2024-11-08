@@ -213,7 +213,6 @@ class App {
     `;
     document.querySelector('ul').insertAdjacentHTML('beforeend', html);
 
-    //les gestionnaires d'événements pour les boutons d'édition et de suppression
     const locationEl = document
       .querySelector(`[data-id="${location.id}"]`)
       .closest('.location-container');
@@ -225,7 +224,6 @@ class App {
       .addEventListener('click', this._deleteLocation.bind(this));
   }
 
-  //  La supression
   _editLocation(e) {
     const locationEl = e.target.closest('.location-container');
     const locationId = locationEl.querySelector('.location').dataset.id;
@@ -274,7 +272,6 @@ class App {
       form.addEventListener('submit', this._newAgenceXpress.bind(this));
     };
 
-    // Attache l'événement de mise à jour
     form.addEventListener('submit', updateLocation);
   }
 
@@ -282,11 +279,8 @@ class App {
     const locationEl = e.target.closest('.location-container');
     const locationId = locationEl.querySelector('.location').dataset.id;
 
-    // Filtrage des locations pour supprimer celle qui est ciblée
     this.#locations = this.#locations.filter(loc => loc.id !== +locationId);
     locationEl.remove();
-
-    // Sauvegarde dans le localStorage après suppression
     this._setLocalStorage();
   }
 
