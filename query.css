@@ -22,12 +22,16 @@ body {
   }
 
   .arrow {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 80%;
     transform: translateY(-50%);
     transition: left 0.3s ease;
     z-index: 1000;
+    background-color: white;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
   }
 
   .arrow.hidden {
@@ -85,6 +89,43 @@ body {
 }
 
 @media screen and (max-width: 425px) {
+  .sidebar.hidden {
+    transform: translateX(-100%);
+  }
+
+  .arrow {
+    position: fixed;
+    top: 50%;
+    left: 73%;
+    transform: translateY(-50%);
+    transition: left 0.3s ease;
+    z-index: 1000;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  .arrow button {
+    background-color: #fff;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  .arrow.hidden {
+    left: 0;
+  }
+
+  #map {
+    width: 100%;
+    height: 100vh;
+    transition: width 0.3s ease;
+  }
+
+  #map.expanded {
+    width: 100%;
+  }
+
   .sidebar {
     display: flex;
     flex-direction: column;
