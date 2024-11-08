@@ -237,7 +237,6 @@ class App {
   // La modification
   _editLocation(e) {
     const locationEl = e.target.closest('.location-container');
-
     const locationId = locationEl.querySelector('.location').dataset.id;
     const location = this.#locations.find(loc => loc.id === +locationId);
 
