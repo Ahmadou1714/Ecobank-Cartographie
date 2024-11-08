@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1730364993001,
+    "coords": [9.5580793, -13.6649425],
+    "nom": "Ecobank Belle vue",
+    "adresse": "Belle vue",
+    "horaire": "8:00-16:30",
+    "services": "Conseil financier",
+    "description": "Ecobank Belle vue - Belle vue",
+    "type": "agence"
+  },
+  {
+    "id": 1730364993002,
+    "coords": [9.5476331, -13.6618289],
+    "nom": "Ecobank Agence Madina",
+    "adresse": "Ecobank Route Niger, 299",
+    "horaire": "8:00-16:30",
+    "services": "Ouverture de Compte",
+    "description": "Ecobank Agence Madina - Ecobank, Route Niger, 299",
+    "type": "agence"
+  },
+  {
+    "id": 1730364993003,
+    "coords": [9.5082652, -13.710827],
+    "nom": "Ecobank Agence de Kaloum",
+    "adresse": "Ecobank 5e Avenue, 258",
+    "horaire": "8:00-16:30",
+    "services": "Ouverture de Compte",
+    "description": "Ecobank Agence de Kaloum - Ecobank, 5e Avenue, 258",
+    "type": "agence"
+  },
+  {
+    "id": 1730364993004,
+    "coords": [9.5737176, -13.6563462],
+    "nom": "Ecobank Agence Hamdallaye",
+    "adresse": "Ecobank Hamdallaye",
+    "horaire": "8:00-16:30",
+    "services": "Ouverture de Compte",
+    "description": "Ecobank Agence HamdallayeRue RO 100, 625",
+    "type": "agence"
+  },
+  {
+    "id": 1730364993005,
+    "coords": [9.6066174, -13.6499136],
+    "nom": "Ecobank Agence de Kipé",
+    "adresse": "Ecobank Kipé",
+    "horaire": "8:00-16:30",
+    "services": "Ouverture de Compte",
+    "description": "Ecobank Agence de Kipé - Ecobank, Kipé",
+    "type": "agence"
+  },
+  {
+    "id": 1730364993006,
+    "coords": [9.5091763, -13.7136574],
+    "nom": "Point Xpress Kaloum A DREAM SARLU",
+    "adresse": "Kaloum A DREAM SARLU",
+    "horaire": "7:00-17:00",
+    "services": "Transfert d'argent",
+    "description": "Point Xpress Kaloum A DREAM SARLU - Avenue M'Balia Camara, 258",
+    "type": "xpress"
+  },
+  {
+    "id": 1730364993007,
+    "coords": [9.5784302, -13.6239573],
+    "nom": "Point Xpress Matoto ETS BAH KADIATOU ET FILS",
+    "adresse": "ETS BAH KADIATOU ET FILS",
+    "horaire": "7:00-17:00",
+    "services": "Transfert d'argent",
+    "description": "Point Xpress Matoto ETS BAH KADIATOU ET FILS -Tropicana Night club, Transversale 2, 625",
+    "type": "xpress"
+  },
+  {
+    "id": 1730364993008,
+    "coords": [9.5476645, -13.6616105],
+    "nom": "POINT XPRESS DIXINN WONGAYE KIOSQUE MADINA",
+    "adresse": "Route Niger, 299",
+    "horaire": "7:00-17:00",
+    "services": "Transfert d'argent",
+    "description": "POINT XPRESS DIXINN WONGAYE KIOSQUE MADINA, Route Niger, 299",
+    "type": "xpress"
+  },
+  {
+    "id": 1730364993009,
+    "coords": [9.6412344, -13.5782643],
+    "nom": "CASH UP SARLU",
+    "adresse": "CASH UP SARLU",
+    "horaire": "7:00-17:00",
+    "services": "Transfert d'argent",
+    "description": "CASH UP SARLU - ETS CASH UP KIPE",
+    "type": "xpress"
+  },
+  {
+    "id": 1730364993011,
+    "coords": [10.0492871, -12.8525304],
+    "nom": "ETS BAH EL AMADOU PLUS KINDIA YEWOLE",
+    "adresse": "N 24, Kindia, Region de Kindia",
+    "horaire": "7:00-17:00",
+    "services": "Transfert d'argent",
+    "description": "Point Xpress Kindia ETS BAH EL AMADOU PLUS KINDIA YEWOLE - N 24, Kindia, Region de Kindia",
+    "type": "xpress"
+  },
+  {
+    "id": 1730364993012,
+    "coords": [9.7283, -13.4254],
+    "nom": "ETS SINTA COYAH CENTRE MARCHE",
+    "adresse": "Coyah Centre Marche",
+    "horaire": "7:00-17:00",
+    "services": "Transfert d'argent",
+    "description": "ETS SINTA COYAH CENTRE MARCHE - Coyah Centre Marche",
+    "type": "xpress"
+  }
+]
