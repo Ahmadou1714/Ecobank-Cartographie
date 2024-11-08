@@ -106,10 +106,6 @@ body {
   .form {
     width: 100%;
   }
-
-  .search-bar-map {
-    right: -10%;
-  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -148,8 +144,9 @@ body {
   }
 
   .location__details-container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
   }
 
   .search-overlay {
@@ -185,7 +182,7 @@ body {
 }
 
 @media screen and (max-width: 2560px) {
-  .sidebar{
+  .sidebar {
     width: 84.3rem;
   }
   .location-container {
