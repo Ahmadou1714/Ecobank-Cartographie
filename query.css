@@ -61,15 +61,15 @@ body {
   .sidebar {
     display: flex;
     flex-direction: column;
-    width: 30%; /* Augmenté de 20% à 30% */
+    width: 30%;
     padding: 0.5rem;
   }
 
   #map {
-    width: 70%; /* Réduit de 80% à 70% */
+    width: 70%;
   }
   .location {
-    width: 50%; /* Augmenté de 40% à 50% */
+    width: 50%;
   }
 
   .location-container {
@@ -223,9 +223,9 @@ body {
 }
 
 .sidebar .location__details {
-    font-size: 0.8rem;
+  font-size: 0.8rem;
 }
 
 .sidebar .location__actions .btn {
-    padding: 0.3rem 0.5rem;
+  padding: 0.3rem 0.5rem;
 }
