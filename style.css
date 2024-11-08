@@ -302,13 +302,13 @@ ul {
 .location__details {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  /* gap: 0.5rem; */
   color: var(--color-dark--2);
   /* font-size: 1.6rem; */
   /* white-space: nowrap; */
   /* overflow: hidden; */
   text-overflow: ellipsis;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .location__details span {

@@ -108,6 +108,17 @@ body {
   .form {
     width: 100%;
   }
+
+  .btn--edit {
+    background-color: var(--color-primary--1);
+  }
+
+  .btn--delete {
+    background-color: red;
+  }
+  .location__actions {
+    gap: 2rem;
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -178,6 +189,10 @@ body {
     margin-bottom: 1rem;
   }
 
+  .location__details {
+    gap: 1rem;
+  }
+
   .search-overlay {
     left: 70%;
   }
@@ -187,11 +202,24 @@ body {
   .sidebar {
     width: 84.3rem;
   }
+
   .location-container {
     display: flex;
     flex-direction: row;
-    width: 98%;
+    align-items: center;
+    justify-content: space-around;
+    /* width: 98%; */
   }
+
+  .location {
+    width: 100%;
+  }
+  .location__details-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
   #map {
     width: 80%;
   }
