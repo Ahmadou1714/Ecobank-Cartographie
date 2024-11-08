@@ -185,6 +185,9 @@ body {
 }
 
 @media screen and (max-width: 2560px) {
+  .sidebar{
+    width: 84.3rem;
+  }
   .location-container {
     display: flex;
     flex-direction: row;
