@@ -32,10 +32,6 @@ body {
     box-sizing: border-box;
   }
 
-  .location__details span {
-    font-size: 2rem;
-  }
-
   .form {
     grid-template-columns: 1fr;
   }
@@ -80,6 +76,10 @@ body {
     box-sizing: border-box;
   }
 
+  .sidebar .location__details {
+    font-size: 3rem;
+  }
+
   .form {
     grid-template-columns: 1fr;
   }
@@ -92,9 +92,9 @@ body {
     width: 90%;
   }
 
-  .sidebar .location__details {
+  /* .sidebar .location__details {
     font-size: 0.8rem;
-  }
+  } */
 
   .sidebar .location__actions .btn {
     padding: 0.3rem 0.5rem;
@@ -223,7 +223,7 @@ body {
 }
 
 .sidebar .location__details {
-  font-size: 0.8rem;
+  font-size: 1.5rem;
 }
 
 .sidebar .location__actions .btn {
