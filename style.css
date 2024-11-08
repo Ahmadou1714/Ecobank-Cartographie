@@ -452,6 +452,20 @@ ul {
   z-index: 1000;
   text-align: center;
 }
+.success {
+  border: 2px solid var(--color-light--1);
+  border-radius: 8px;
+  padding: 2.5rem;
+  background-color: var(--color-brand--2);
+  color: white;
+  position: absolute;
+  top: 30%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 1000;
+  text-align: center;
+}
 
 #importBtn {
   display: none;

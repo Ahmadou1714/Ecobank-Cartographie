@@ -462,3 +462,18 @@ form.addEventListener('submit', function (e) {
     form.reset();
   }, 500);
 });
+
+document.querySelector('form').addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  const modal = document.querySelector('.success');
+  const modalMessage = document.querySelector('.modal__message');
+  modalMessage.textContent = 'Formulaire soumis avec succès !';
+  modal.classList.remove('hidden');
+
+  setTimeout(() => {
+    modal.classList.add('hidden');
+  }, 3000);
+
+  this.reset();
+});
