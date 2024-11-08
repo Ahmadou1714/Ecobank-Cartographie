@@ -1,5 +1,3 @@
-Voici une explication détaillée du code fourni :
-
 ### 'use strict';
 
 1. `'use strict';` : Active le mode strict de JavaScript, ce qui rend le code plus sécurisé en détectant plus d'erreurs de programmation, en interdisant certaines actions et en imposant des règles plus strictes pour l'écriture du code.
