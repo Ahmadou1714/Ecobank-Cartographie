@@ -212,6 +212,70 @@ class App {
       </div>
     `;
     document.querySelector('ul').insertAdjacentHTML('beforeend', html);
+
+    //les gestionnaires d'événements pour les boutons d'édition et de suppression
+    const locationEl = document
+      .querySelector(`[data-id="${location.id}"]`)
+      .closest('.location-container');
+    locationEl
+      .querySelector('.btn--edit')
+      .addEventListener('click', this._editLocation.bind(this));
+    locationEl
+      .querySelector('.btn--delete')
+      .addEventListener('click', this._deleteLocation.bind(this));
+  }
+
+  //  La supression
+  _deleteLocation(e) {
+    const locationEl = e.target.closest('.location-container');
+    const locationId = locationEl.querySelector('.location').dataset.id;
+    this.#locations = this.#locations.filter(loc => loc.id !== +locationId);
+    locationEl.remove();
+    this._setLocalStorage();
+  }
+
+  // La modification
+  _editLocation(e) {
+    const locationEl = e.target.closest('.location-container');
+
+    const locationId = locationEl.querySelector('.location').dataset.id;
+    const location = this.#locations.find(loc => loc.id === +locationId);
+
+    inputNom.value = location.nom;
+    inputAdresse.value = location.adresse;
+    inputHoraire.value = location.horaire;
+    inputType.value = location.type;
+    inputService.value = location.services;
+
+    form.classList.remove('hidden');
+    inputNom.focus();
+
+    form.removeEventListener('submit', this._newAgenceXpress.bind(this));
+
+    form.addEventListener(
+      'submit',
+      function updateLocation(e) {
+        e.preventDefault();
+
+        location.nom = inputNom.value;
+        location.adresse = inputAdresse.value;
+        location.horaire = inputHoraire.value;
+        location.services = inputService.value;
+        location.type = inputType.value;
+
+        locationEl.querySelector('.location__title').textContent = location.nom;
+        locationEl.querySelector(
+          '.location__details .location__value'
+        ).textContent = location.adresse;
+
+        form.classList.add('hidden');
+        form.reset();
+
+        this._setLocalStorage();
+
+        form.removeEventListener('submit', updateLocation);
+      }.bind(this)
+    );
   }
 
   _moveToPopUp(e) {
