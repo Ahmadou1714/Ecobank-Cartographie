@@ -477,3 +477,19 @@ document.querySelector('form').addEventListener('submit', function (event) {
 
   this.reset();
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  const sidebar = document.querySelector('.sidebar');
+  const arrowButton = document.querySelector('.btn--arrow ion-icon');
+  const map = document.getElementById('map');
+
+  document.querySelector('.btn--arrow').addEventListener('click', function () {
+    sidebar.classList.toggle('hidden');
+    map.classList.toggle('expanded');
+    if (sidebar.classList.contains('hidden')) {
+      arrowButton.setAttribute('name', 'arrow-back-outline');
+    } else {
+      arrowButton.setAttribute('name', 'arrow-forward-outline');
+    }
+  });
+});
