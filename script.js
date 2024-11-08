@@ -480,18 +480,26 @@ document.querySelector('form').addEventListener('submit', function (event) {
 
 document.addEventListener('DOMContentLoaded', function () {
   const sidebar = document.querySelector('.sidebar');
-  const arrowButton = document.querySelector('.btn--arrow ion-icon');
   const map = document.getElementById('map');
-  const arrowContainer = document.querySelector('.arrow');
+
+  // Créer dynamiquement le bouton de la flèche
+  const arrowContainer = document.createElement('div');
+  arrowContainer.classList.add('arrow');
+  arrowContainer.innerHTML =
+    '<button class="btn--arrow"><ion-icon name="arrow-forward-outline"></ion-icon></button>';
+  document.body.appendChild(arrowContainer);
+
+  const arrowButton = arrowContainer.querySelector('.btn--arrow ion-icon');
 
   document.querySelector('.btn--arrow').addEventListener('click', function () {
     sidebar.classList.toggle('hidden');
     map.classList.toggle('expanded');
-    arrowContainer.classList.toggle('hidden');
     if (sidebar.classList.contains('hidden')) {
       arrowButton.setAttribute('name', 'arrow-back-outline');
+      arrowContainer.style.left = '0'; // Déplacez le bouton de la flèche à gauche
     } else {
       arrowButton.setAttribute('name', 'arrow-forward-outline');
+      arrowContainer.style.left = '80%'; // Replacez le bouton de la flèche à sa position initiale
     }
   });
 });
