@@ -17,37 +17,6 @@ body {
     padding: 0.5rem;
   }
 
-  .sidebar.hidden {
-    transform: translateX(-100%);
-  }
-
-  .arrow {
-    position: fixed;
-    top: 50%;
-    left: 80%;
-    transform: translateY(-50%);
-    transition: left 0.3s ease;
-    z-index: 1000;
-    background-color: white;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-  }
-
-  .arrow.hidden {
-    left: 0;
-  }
-
-  #map {
-    width: 100%;
-    height: 100vh;
-    transition: width 0.3s ease;
-  }
-
-  #map.expanded {
-    width: 100%;
-  }
-
   .location {
     width: 40%;
   }
@@ -89,56 +58,18 @@ body {
 }
 
 @media screen and (max-width: 425px) {
-  .sidebar.hidden {
-    transform: translateX(-100%);
-  }
-
-  .arrow {
-    position: fixed;
-    top: 50%;
-    left: 74%;
-    transform: translateY(-50%);
-    transition: left 0.3s ease;
-    z-index: 1000;
-    background-color: white;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-  }
-
-  .arrow.hidden {
-    left: 0;
-  }
-
-  .arrow button {
-    background-color: #fff;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-  }
-
-  #map {
-    width: 100%;
-    height: 100vh;
-    transition: width 0.3s ease;
-  }
-
-  #map.expanded {
-    width: 100%;
-  }
-
   .sidebar {
     display: flex;
     flex-direction: column;
-    width: 20%;
+    width: 30%; /* Augmenté de 20% à 30% */
     padding: 0.5rem;
   }
 
   #map {
-    width: 80%;
+    width: 70%; /* Réduit de 80% à 70% */
   }
   .location {
-    width: 40%;
+    width: 50%; /* Augmenté de 40% à 50% */
   }
 
   .location-container {
@@ -289,4 +220,12 @@ body {
   #map {
     width: 80%;
   }
+}
+
+.sidebar .location__details {
+    font-size: 0.8rem;
+}
+
+.sidebar .location__actions .btn {
+    padding: 0.3rem 0.5rem;
 }
