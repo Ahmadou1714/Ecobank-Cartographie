@@ -96,17 +96,11 @@ body {
   .arrow {
     position: fixed;
     top: 50%;
-    left: 73%;
+    left: 80%;
     transform: translateY(-50%);
     transition: left 0.3s ease;
     z-index: 1000;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-  }
-
-  .arrow button {
-    background-color: #fff;
+    background-color: white;
     border: none;
     padding: 0.5rem;
     cursor: pointer;
@@ -114,6 +108,13 @@ body {
 
   .arrow.hidden {
     left: 0;
+  }
+
+  .arrow button {
+    background-color: #fff;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
   }
 
   #map {

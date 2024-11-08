@@ -482,10 +482,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const sidebar = document.querySelector('.sidebar');
   const arrowButton = document.querySelector('.btn--arrow ion-icon');
   const map = document.getElementById('map');
+  const arrowContainer = document.querySelector('.arrow');
 
   document.querySelector('.btn--arrow').addEventListener('click', function () {
     sidebar.classList.toggle('hidden');
     map.classList.toggle('expanded');
+    arrowContainer.classList.toggle('hidden');
     if (sidebar.classList.contains('hidden')) {
       arrowButton.setAttribute('name', 'arrow-back-outline');
     } else {
