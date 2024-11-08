@@ -226,55 +226,68 @@ class App {
   }
 
   //  La supression
-  _deleteLocation(e) {
-    const locationEl = e.target.closest('.location-container');
-    const locationId = locationEl.querySelector('.location').dataset.id;
-    this.#locations = this.#locations.filter(loc => loc.id !== +locationId);
-    locationEl.remove();
-    this._setLocalStorage();
-  }
-
-  // La modification
   _editLocation(e) {
     const locationEl = e.target.closest('.location-container');
     const locationId = locationEl.querySelector('.location').dataset.id;
     const location = this.#locations.find(loc => loc.id === +locationId);
 
+    // Remplissage du formulaire avec les données de la localisation
     inputNom.value = location.nom;
     inputAdresse.value = location.adresse;
     inputHoraire.value = location.horaire;
     inputType.value = location.type;
     inputService.value = location.services;
 
+    // Affiche le formulaire de modification
     form.classList.remove('hidden');
     inputNom.focus();
 
+    // Supprime le gestionnaire de l'événement de création d'une nouvelle agence
     form.removeEventListener('submit', this._newAgenceXpress.bind(this));
 
-    form.addEventListener(
-      'submit',
-      function updateLocation(e) {
-        e.preventDefault();
+    const updateLocation = e => {
+      e.preventDefault();
 
-        location.nom = inputNom.value;
-        location.adresse = inputAdresse.value;
-        location.horaire = inputHoraire.value;
-        location.services = inputService.value;
-        location.type = inputType.value;
+      // Mise à jour des informations de la localisation
+      location.nom = inputNom.value;
+      location.adresse = inputAdresse.value;
+      location.horaire = inputHoraire.value;
+      location.services = inputService.value;
+      location.type = inputType.value;
 
-        locationEl.querySelector('.location__title').textContent = location.nom;
-        locationEl.querySelector(
-          '.location__details .location__value'
-        ).textContent = location.adresse;
+      // Mise à jour de l'interface
+      locationEl.querySelector('.location__title').textContent = location.nom;
+      locationEl.querySelector(
+        '.location__details .location__value'
+      ).textContent = location.adresse;
 
-        form.classList.add('hidden');
-        form.reset();
+      form.classList.add('hidden');
+      form.reset();
 
-        this._setLocalStorage();
+      // Sauvegarde dans le localStorage
+      this._setLocalStorage();
 
-        form.removeEventListener('submit', updateLocation);
-      }.bind(this)
-    );
+      // Suppression de l'événement de mise à jour pour éviter les duplications
+      form.removeEventListener('submit', updateLocation);
+
+      // Réattache l'événement pour ajouter une nouvelle agence
+      form.addEventListener('submit', this._newAgenceXpress.bind(this));
+    };
+
+    // Attache l'événement de mise à jour
+    form.addEventListener('submit', updateLocation);
+  }
+
+  _deleteLocation(e) {
+    const locationEl = e.target.closest('.location-container');
+    const locationId = locationEl.querySelector('.location').dataset.id;
+
+    // Filtrage des locations pour supprimer celle qui est ciblée
+    this.#locations = this.#locations.filter(loc => loc.id !== +locationId);
+    locationEl.remove();
+
+    // Sauvegarde dans le localStorage après suppression
+    this._setLocalStorage();
   }
 
   _moveToPopUp(e) {
