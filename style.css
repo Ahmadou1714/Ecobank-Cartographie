@@ -339,11 +339,16 @@ ul {
   transition: transform 0.3s ease-in-out;
 }
 
-.btn--edit {
+.btn--edit,
+.btn--delete {
+  background-color: var(--color-primary);
+}
+
+.btn--edit:hover {
   background-color: var(--color-primary--1);
 }
 
-.btn--delete {
+.btn--delete:hover {
   background-color: red;
 }
 
