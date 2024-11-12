@@ -57,12 +57,12 @@
 ## 7. Scénarios Utilisateurs
 
 - **Localiser une agence** : L'utilisateur accède à la carte, recherche une agence par nom ou type.
-- **Accéder aux informations détaillées** : En cliquant sur un marqueur, une fenêtre contextuelle affiche les informations.
+- **Accéder aux informations détaillées** : En survolant un marqueur, une fenêtre contextuelle affiche les informations.
 - **Exporter/Importer des données** : L'utilisateur peut sauvegarder ou charger les données via un fichier JSON.
 
 ## 8. Sécurité et Vie Privée
 
-- **Géolocalisation** : Demande d'autorisation utilisateur pour accéder à la position.
+- **Géolocalisation** : Demande d'autorisation de l'utilisateur pour accéder à la position.
 - **Stockage local** : Utilisation de Local Storage pour réduire le risque de fuite de données.
 
 ## 9. Plan de Test
