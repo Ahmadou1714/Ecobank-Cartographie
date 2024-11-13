@@ -106,10 +106,6 @@ class App {
       return this._showModal('Veuillez remplir tous les champs du formulaire.');
     }
 
-    if (type || nom || adresse || horaire || services) {
-      return this._showModal('Formulaire soumis avec succès.');
-    }
-
     const isDuplicate = this.#locations.some(
       loc => loc.nom === nom && loc.adresse === adresse
     );
