@@ -43,7 +43,26 @@
 
 <body>
   <div class="sidebar">
-    <img src="logo.webp" alt="Logo Ecobank" class="logo" />
+    <nav class="header">
+      <img src="logo.webp" alt="Logo Ecobank" class="logo" />
+      <div class="filter-btn">
+        <button>
+          <ion-icon name="funnel-outline"></ion-icon> FILTRER PAR
+        </button>
+        <div class="filter-dropdown">
+          <label for="filter-select">Choisissez un filtre:</label>
+          <select id="filter-select" class="filter-select">
+            <option value="">Sélectionnez une option</option>
+            <option value="agence">Agence</option>
+            <option value="point-xpress">Point Xpress</option>
+          </select>
+        </div>
+      </div>
+    </nav>
+
+
+
+    <!-- <img src="logo.webp" alt="Logo Ecobank" class="logo" /> -->
 
     <ul class="container">
       <form class="form hidden" aria-label="Formulaire d'agence et Xpress">
@@ -158,11 +177,13 @@
       <button class="btn--arrow"><ion-icon name="arrow-forward-outline"></ion-icon></button>
     </div> -->
 
-    <div class="copyright">
-      <p>© 2024 Copyright by
-        <a class="link" target="_blank" href="https://www.ecobank.com/">Ecobank</a>
-      </p>
-    </div>
+    <footer class="footer">
+      <div class="copyright">
+        <p>© 2024 Copyright by
+          <a class="link" target="_blank" href="https://www.ecobank.com/">Ecobank</a>
+        </p>
+      </div>
+    </footer>
   </div>
 
   <div id="map"></div>

@@ -155,23 +155,21 @@ class App {
       .openTooltip();
 
     const popup = L.popup({
-      minWidth: 250,
-      maxWidth: 300,
+      minWidth: 200,
+      maxWidth: 200,
       autoClose: false,
       closeOnClick: false,
       className: 'popup',
     }).setContent(`
-      <div class="${
-        location.type === 'agence'
-          ? 'popup-content-agence'
-          : 'popup-content-xpress'
-      }">
-        <strong>${location.nom}</strong><br>
-        Adresse : ${location.adresse}<br>
-        Services : ${location.services}<br>
-        Horaires : ${location.horaire}
-      </div>
-    `);
+  <div class="${
+    location.type === 'agence' ? 'popup-content-agence' : 'popup-content-xpress'
+  }">
+    <strong>${location.nom}</strong><br>
+    <ion-icon name="location-outline"></ion-icon> ${location.adresse}<br>
+    <ion-icon name="card-outline"></ion-icon> ${location.services}<br>
+    <ion-icon name="time-outline"></ion-icon> ${location.horaire}
+  </div>
+`);
 
     marker.on('mouseover', () => marker.bindPopup(popup).openPopup());
     marker.on('mouseout', () => marker.closePopup());
@@ -397,8 +395,15 @@ class App {
     reader.readAsText(input.files[0]);
   }
 
+  _initEventListeners() {
+    document.getElementById('filter-select').addEventListener('change', () => {
+      this._filterLocations();
+    });
+  }
+
   _filterLocations() {
-    const query = searchInput.value.toLowerCase();
+    const query = searchInput ? searchInput.value.toLowerCase() : '';
+    const selectedType = document.getElementById('filter-select').value;
     const locationContainers = document.querySelectorAll('.location-container');
 
     locationContainers.forEach(locationContainer => {
@@ -408,14 +413,17 @@ class App {
         ? 'agence'
         : 'xpress';
 
+      // Vérifie si le nom correspond à la recherche
       const matchesName = titleElement.textContent
         .toLowerCase()
         .includes(query);
+      // Vérifie si le type correspond au filtre sélectionné ou si aucun filtre n'est appliqué
       const matchesType =
-        (query.includes('agence') && locationType === 'agence') ||
-        (query.includes('xpress') && locationType === 'xpress') ||
-        (!query.includes('agence') && !query.includes('xpress'));
+        selectedType === '' ||
+        (selectedType === 'agence' && locationType === 'agence') ||
+        (selectedType === 'point-xpress' && locationType === 'xpress');
 
+      // Affiche ou masque les éléments selon la recherche et le filtre
       locationContainer.style.display =
         matchesName && matchesType ? 'flex' : 'none';
     });
@@ -477,3 +485,9 @@ document.querySelector('form').addEventListener('submit', function (event) {
 
   this.reset();
 });
+
+document
+  .getElementById('filter-select')
+  .addEventListener('change', function () {
+    app._filterLocations();
+  });
