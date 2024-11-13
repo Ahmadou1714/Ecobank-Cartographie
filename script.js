@@ -15,7 +15,7 @@ const importBtn = document.getElementById('importBtn');
 const searchBtn = document.querySelector('.form__btn');
 const boutonEdit = document.querySelector('.btn--edit');
 const boutonDelete = document.querySelector('.btn--delete');
-const boutonCancel = document.querySelector('.form__btn--cancel');
+const cancelBouton = document.querySelector('.form__btn--cancel');
 
 class App {
   #map;
@@ -34,7 +34,7 @@ class App {
     importBtn.addEventListener('change', this._importData.bind(this));
     searchInput.addEventListener('input', this._filterLocations.bind(this));
     searchBtn.addEventListener('click', this._filterLocations.bind(this));
-    boutonCancel.addEventListener('click', this._cancelForm.bind(this));
+    cancelBouton.addEventListener('click', this._cancelForm.bind(this));
   }
 
   _getPosition() {
@@ -79,12 +79,7 @@ class App {
 
   _cancelForm() {
     form.classList.add('hidden');
-    form.reset();
-    setTimeout(() => {
-      form.style.display = 'grid';
-    }, 500);
   }
-
   reset() {
     inputNom.value = inputAdresse.value = '';
   }
@@ -99,6 +94,7 @@ class App {
 
   _newAgenceXpress(e) {
     e.preventDefault();
+
     const { lat, lng } = this.#mapEvent.latlng;
     const type = inputType.value;
     const nom = inputNom.value;
@@ -106,13 +102,12 @@ class App {
     const horaire = inputHoraire.value;
     const services = inputService.value;
 
-    // Vérification des champs vides
     if (!type || !nom || !adresse || !horaire || !services) {
       return this._showModal('Veuillez remplir tous les champs du formulaire.');
     }
 
     if (type || nom || adresse || horaire || services) {
-      return this._showModal('Formulaire soumis avec succès !');
+      return this._showModal('Formulaire soumis avec succès.');
     }
 
     const isDuplicate = this.#locations.some(
@@ -138,6 +133,7 @@ class App {
     this.#locations.push(location);
     this._renderBanqueMarker(location);
     this._renderBanque(location);
+    // this._hideForm();
     this._setLocalStorage();
   }
 
@@ -483,21 +479,6 @@ form.addEventListener('submit', function (e) {
     form.reset();
   }, 500);
 });
-
-// document.querySelector('form').addEventListener('submit', function (event) {
-//   event.preventDefault();
-
-//   const modal = document.querySelector('.success');
-//   const modalMessage = document.querySelector('.modal__message');
-//   modalMessage.textContent = 'Formulaire soumis avec succès !';
-//   modal.classList.remove('hidden');
-
-//   setTimeout(() => {
-//     modal.classList.add('hidden');
-//   }, 3000);
-
-//   this.reset();
-// });
 
 document
   .getElementById('filter-select')
