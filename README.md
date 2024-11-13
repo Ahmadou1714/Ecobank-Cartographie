@@ -1,6 +1,7 @@
 # Ecobank Cartographie
 
 ## Table des Matières
+
 - [Introduction](#introduction)
 - [Contexte](#contexte)
 - [Fonctionnalités Clés](#fonctionnalités-clés)
@@ -21,6 +22,7 @@
 **Description** : Cette application de cartographie interactive aide les clients d'Ecobank à localiser les agences et points Xpress les plus proches, en utilisant la géolocalisation et une recherche avancée pour un accès rapide aux informations des points de service.
 
 **Objectifs** :
+
 - **Accessibilité** : Simplifier l'accès aux agences et points Xpress.
 - **Expérience Utilisateur** : Fournir une navigation intuitive et rapide.
 - **Développement des Services** : Encourager l'utilisation des services bancaires numériques d'Ecobank.
@@ -41,6 +43,7 @@
 ## Architecture de l'Application
 
 L'application utilise une architecture frontale légère avec les composants suivants :
+
 - **HTML, CSS et JavaScript** : Pour structurer l'interface utilisateur, gérer les interactions, et afficher les données.
 - **Leaflet.js** : Bibliothèque de cartographie pour afficher les points de service et gérer le zoom, le déplacement, etc.
 - **Local Storage** : Stocke localement les informations des points de service, permettant une récupération rapide.
@@ -53,7 +56,7 @@ Voici un aperçu de l'architecture de l'application :
 
 Ce flowchart montre le fonctionnement de l'application, notamment la récupération des données des agences à partir d'une API si elles ne sont pas déjà présentes dans le Local Storage.
 
-![Flowchart du Projet - Simple](Projet%20Ecobank%20Flowchart_simple.png)
+![Flowchart du Projet](Projet%20Ecobank%20FlowChart_simple.png)
 
 ## Technologies Utilisées
 
@@ -65,11 +68,13 @@ Ce flowchart montre le fonctionnement de l'application, notamment la récupérat
 ## Composants Principaux
 
 - **App** :
+
   - Initialise la carte et gère les événements de clic, zoom et recherche.
   - Stocke et récupère les données des points de service.
   - Permet l'ajout, la modification et la suppression des points de service.
 
 - **Classes 'Banque', 'Agence', 'Xpress'** :
+
   - Définit les différents types de points de service avec leurs attributs (coordonnées, nom, adresse, services, etc.).
 
 - **Fonctions Importantes** :
