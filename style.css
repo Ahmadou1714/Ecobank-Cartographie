@@ -90,14 +90,22 @@ nav {
   cursor: pointer;
   font-size: 1rem;
   border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
-.filter-btn ion-icon {
-  margin-right: 0.5rem;
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .filter-dropdown {
-  display: none; /* cache par défaut */
+  display: block;
+  opacity: 0;
   position: absolute;
   top: 100%;
   right: 0;
@@ -108,7 +116,18 @@ nav {
   z-index: 10;
   border-radius: 4px;
   width: 150px;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
+
+/* .filter-dropdown {
+  display: block;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  visibility: hidden;
+} */
 
 .filter-dropdown label {
   font-size: 0.9rem;
@@ -124,14 +143,21 @@ nav {
   border: 1px solid #ccc;
 }
 
+/* .filter-btn:hover .filter-dropdown {
+  display: block;
+} */
+
 .filter-btn:hover .filter-dropdown {
-  display: block; /* Pour afficher le menu au survol */
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
 }
 
-/* .logo:hover {
-  transform: rotate(360deg) scale(1.1);
-  transition: transform 1s ease-in-out;
-} */
+.filter-btn button:hover {
+  box-shadow: 0 4px 12px rgba(0, 115, 230, 0.3);
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
 
 .container {
   list-style: none;
@@ -202,6 +228,16 @@ nav {
 
 .form__btn:hover {
   transform: scale(1.05);
+}
+
+.form__btn--cancel {
+  background-color: red;
+}
+
+.form__btn-group {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 /* Footer */
@@ -463,6 +499,21 @@ ul {
 
 .leaflet-tooltip.marker-xpress {
   border-left: 5px solid var(--color-brand--2);
+}
+
+.leaflet-marker-icon {
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+  animation-delay: var(--delay);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .popup {
