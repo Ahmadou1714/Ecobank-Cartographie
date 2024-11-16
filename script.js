@@ -1,6 +1,7 @@
 'use strict';
 
 const form = document.querySelector('.form');
+const sidebar = document.querySelector('.sidebar');
 const inputType = document.querySelector('.form__input--type');
 const inputNom = document.querySelector('.form__input--nom');
 const inputAdresse = document.querySelector('.form__input--adresse');
@@ -122,19 +123,23 @@ class App {
 
     const screenWidth = window.innerWidth;
     if (screenWidth <= 425) {
-      menu.classList.toggle('hidden');
+      sidebar.classList.toggle('hidden');
     }
   }
 
   _toggleMenuOnMap() {
     const screenWidth = window.innerWidth;
     if (screenWidth <= 425) {
-      menu.classList.toggle('hidden');
+      sidebar.classList.toggle('hidden');
     }
   }
 
   _cancelForm() {
     form.classList.add('hidden');
+    const screenWidth = window.innerWidth;
+    if (screenWidth <= 425 && this.sidebar.classList.contains('hidden')) {
+      this.sidebar.classList.remove('hidden');
+    }
   }
   reset() {
     inputNom.value = inputAdresse.value = '';
