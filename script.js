@@ -115,6 +115,13 @@ class App {
     this.#locations.forEach(location => this._renderBanqueMarker(location));
   }
 
+  _toggleSidebarOnSmallScreens() {
+    const screenWidth = window.innerWidth;
+    if (screenWidth <= 425) {
+      menu.classList.toggle('hidden');
+    }
+  }
+
   _showForm(e) {
     this.#mapEvent = e;
     form.classList.remove('hidden');
