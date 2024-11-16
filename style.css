@@ -2,9 +2,12 @@
   --color-brand--1: #ffb545;
   --color-brand--2: #00c46a;
   --color-brand--3: #bed600;
+  --color-brand--4: #00c46a;
   --color-dark--1: #2d3439;
   --color-dark--2: #42484d;
+  --color-dark--3: #f4f4f4;
   --color-primary--1: #0082bb;
+  --color-primary--2: #003b5c;
   --color-light--1: #aaa;
   --color-light--2: #ececec;
   --color-light--3: #d6dee0;
@@ -52,6 +55,11 @@ body {
   height: 100vh; /* pour utiliser toute la hauteur */
   justify-content: space-between;
   padding: 1rem;
+  transition: transform 0.4s ease-in-out;
+}
+
+.sidebar.hidden {
+  transform: translateX(-100%);
 }
 
 /* Header */
@@ -514,6 +522,11 @@ ul {
   to {
     opacity: 1;
   }
+}
+
+.custom-control-position {
+  bottom: 20px; /* Ajustez pour descendre */
+  right: 20px; /* Ajustez la distance par rapport au bord droit */
 }
 
 .popup {

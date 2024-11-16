@@ -162,6 +162,11 @@ body {
   .search-overlay {
     width: 25%;
   }
+
+  .form__btn-group {
+    align-items: center;
+    column-gap: 2rem;
+  }
 }
 
 @media screen and (max-width: 1440px) {

@@ -63,9 +63,53 @@ class App {
     const coords = [latitude, longitude];
     this.#map = L.map('map').setView(coords, this.#mapZoomLevel);
 
-    L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors',
-    }).addTo(this.#map);
+    // Définition des calques
+    const defaultLayer = L.tileLayer(
+      'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+      {
+        attribution: '&copy; OpenStreetMap contributors',
+      }
+    );
+
+    const satelliteLayer = L.tileLayer(
+      'https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
+      {
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+        attribution: 'Imagery © Google Maps',
+      }
+    );
+
+    const terrainLayer = L.tileLayer(
+      'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+      {
+        attribution: 'Map data: © OpenTopoMap contributors',
+      }
+    );
+
+    // Ajouter le calque par défaut à la carte
+    defaultLayer.addTo(this.#map);
+
+    // Ajouter un contrôle pour basculer entre les calques
+    L.control
+      .layers(
+        {
+          Carte: defaultLayer,
+          Satellite: satelliteLayer,
+        },
+        null, // Aucun calque superposé
+        {
+          collapsed: false, // Le panneau reste ouvert
+          position: 'bottomright', // Position du contrôle des calques
+        }
+      )
+      .addTo(this.#map);
+
+    const controlContainer = document.querySelector('.leaflet-control-layers');
+    controlContainer.classList.add('custom-control-position');
+
+    // L.tileLayer('https://tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+    //   attribution: '&copy; OpenStreetMap contributors',
+    // }).addTo(this.#map);
 
     this.#map.on('click', this._showForm.bind(this));
     this.#locations.forEach(location => this._renderBanqueMarker(location));
@@ -411,6 +455,12 @@ class App {
     const selectedType = document.getElementById('filter-select').value;
     const locationContainers = document.querySelectorAll('.location-container');
 
+    this.#map.eachLayer(layer => {
+      if (layer instanceof L.Marker) {
+        this.#map.removeLayer(layer);
+      }
+    });
+
     locationContainers.forEach(locationContainer => {
       const location = locationContainer.querySelector('.location');
       const titleElement = location.querySelector('.location__title');
@@ -418,19 +468,27 @@ class App {
         ? 'agence'
         : 'xpress';
 
-      // Vérifie si le nom correspond à la recherche
       const matchesName = titleElement.textContent
         .toLowerCase()
         .includes(query);
-      // Vérifie si le type correspond au filtre sélectionné ou si aucun filtre n'est appliqué
+
       const matchesType =
         selectedType === '' ||
         (selectedType === 'agence' && locationType === 'agence') ||
         (selectedType === 'point-xpress' && locationType === 'xpress');
 
-      // Affiche ou masque les éléments selon la recherche et le filtre
       locationContainer.style.display =
         matchesName && matchesType ? 'flex' : 'none';
+
+      if (matchesName && matchesType) {
+        const locationId = location.dataset.id;
+        const locationData = this.#locations.find(
+          loc => loc.id === +locationId
+        );
+        if (locationData) {
+          this._renderBanqueMarker(locationData);
+        }
+      }
     });
   }
 }
