@@ -115,17 +115,22 @@ class App {
     this.#locations.forEach(location => this._renderBanqueMarker(location));
   }
 
-  _toggleSidebarOnSmallScreens() {
+  _showForm(e) {
+    this.#mapEvent = e;
+    form.classList.remove('hidden');
+    inputNom.focus();
+
     const screenWidth = window.innerWidth;
     if (screenWidth <= 425) {
       menu.classList.toggle('hidden');
     }
   }
 
-  _showForm(e) {
-    this.#mapEvent = e;
-    form.classList.remove('hidden');
-    inputNom.focus();
+  _toggleMenuOnMap() {
+    const screenWidth = window.innerWidth;
+    if (screenWidth <= 425) {
+      menu.classList.toggle('hidden');
+    }
   }
 
   _cancelForm() {
