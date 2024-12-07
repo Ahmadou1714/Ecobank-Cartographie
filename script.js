@@ -23,6 +23,7 @@ class App {
   #mapEvent;
   #mapZoomLevel = 17;
   #locations = [];
+  #markers = new Map(); // Pour stocker les marqueurs
 
   constructor() {
     this._getPosition();
@@ -41,12 +42,12 @@ class App {
   _getPosition() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(this._loadMap.bind(this), () =>
-        this._showModalLocation(
+        this._showModal(
           'Impossible de récupérer votre position actuelle. Veuillez vérifier votre connexion ou réactualiser la page.'
         )
       );
     } else {
-      this._showModalLocation(
+      this._showModal(
         "La géolocalisation n'est pas supportée par votre navigateur."
       );
     }
@@ -76,14 +77,14 @@ class App {
       'https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',
       {
         subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
-        attribution: 'Imagery © Google Maps',
+        attribution: 'Imagery &copy; Google Maps',
       }
     );
 
     const terrainLayer = L.tileLayer(
       'https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
       {
-        attribution: 'Map data: © OpenTopoMap contributors',
+        attribution: 'Map data: &copy; OpenTopoMap contributors',
       }
     );
 
@@ -205,9 +206,9 @@ class App {
       iconSize: [30, 30],
     });
 
-    const marker = L.marker(location.coords, { icon: iconElement }).addTo(
-      this.#map
-    );
+    const marker = L.marker(location.coords, { icon: iconElement }).addTo(this.#map);
+    this.#markers.set(location.id, marker); // Stocker le marqueur pour la suppression
+
     marker
       .bindTooltip(location.nom, {
         permanent: true,
@@ -227,15 +228,15 @@ class App {
       closeOnClick: false,
       className: 'popup',
     }).setContent(`
-  <div class="${
-    location.type === 'agence' ? 'popup-content-agence' : 'popup-content-xpress'
-  }">
-    <strong>${location.nom}</strong><br>
-    <ion-icon name="location-outline"></ion-icon> ${location.adresse}<br>
-    <ion-icon name="card-outline"></ion-icon> ${location.services}<br>
-    <ion-icon name="time-outline"></ion-icon> ${location.horaire}
-  </div>
-`);
+      <div class="${
+        location.type === 'agence' ? 'popup-content-agence' : 'popup-content-xpress'
+      }">
+        <strong>${location.nom}</strong><br>
+        <ion-icon name="location-outline"></ion-icon> ${location.adresse}<br>
+        <ion-icon name="card-outline"></ion-icon> ${location.services}<br>
+        <ion-icon name="time-outline"></ion-icon> ${location.horaire}
+      </div>
+    `);
 
     marker.on('mouseover', () => marker.bindPopup(popup).openPopup());
     marker.on('mouseout', () => marker.closePopup());
@@ -342,10 +343,22 @@ class App {
   _deleteLocation(e) {
     const locationEl = e.target.closest('.location-container');
     const locationId = locationEl.querySelector('.location').dataset.id;
+    const location = this.#locations.find(loc => loc.id === +locationId);
+    
+    if (confirm(`Êtes-vous sûr de vouloir supprimer ${location.nom} ?`)) {
+      // Supprimer le marqueur de la carte
+      const marker = this.#markers.get(+locationId);
+      if (marker) {
+        this.#map.removeLayer(marker);
+        this.#markers.delete(+locationId);
+      }
 
-    this.#locations = this.#locations.filter(loc => loc.id !== +locationId);
-    locationEl.remove();
-    this._setLocalStorage();
+      // Supprimer de la liste des locations
+      this.#locations = this.#locations.filter(loc => loc.id !== +locationId);
+      locationEl.remove();
+      this._setLocalStorage();
+      this._showModal('success', 'Point de service supprimé avec succès');
+    }
   }
 
   _moveToPopUp(e) {
@@ -411,8 +424,9 @@ class App {
     location.reload();
   }
 
-  _showModal(message) {
-    const modal = document.querySelector('.modal');
+  _showModal(type, message) {
+    const modalClass = type === 'success' ? '.success' : '.modal';
+    const modal = document.querySelector(modalClass);
     modal.classList.remove('hidden');
     modal.querySelector('.modal__message').textContent = message;
     setTimeout(() => modal.classList.add('hidden'), 5000);
@@ -426,37 +440,46 @@ class App {
     a.href = url;
     a.download = 'banques.json';
     a.click();
+    this._showModal('success', 'Données exportées avec succès');
   }
 
   _importData(e) {
     const input = e.target;
     const reader = new FileReader();
     reader.onload = () => {
-      const data = JSON.parse(reader.result);
-      data.forEach(location => {
-        const newLocation =
-          location.type === 'agence'
-            ? new Agence(
-                location.coords,
-                location.nom,
-                location.adresse,
-                location.horaire,
-                location.services
-              )
-            : location.type === 'xpress'
-            ? new Xpress(
-                location.coords,
-                location.nom,
-                location.adresse,
-                location.horaire,
-                location.services
-              )
-            : null;
-        this.#locations.push(newLocation);
-        this._renderBanqueMarker(newLocation);
-        this._renderBanque(newLocation);
-      });
-      this._setLocalStorage();
+      try {
+        const data = JSON.parse(reader.result);
+        data.forEach(location => {
+          const newLocation =
+            location.type === 'agence'
+              ? new Agence(
+                  location.coords,
+                  location.nom,
+                  location.adresse,
+                  location.horaire,
+                  location.services
+                )
+              : location.type === 'xpress'
+              ? new Xpress(
+                  location.coords,
+                  location.nom,
+                  location.adresse,
+                  location.horaire,
+                  location.services
+                )
+              : null;
+          this.#locations.push(newLocation);
+          this._renderBanqueMarker(newLocation);
+          this._renderBanque(newLocation);
+        });
+        this._setLocalStorage();
+        this._showModal('success', 'Données importées avec succès');
+      } catch (error) {
+        this._showModal('error', 'Erreur lors de l\'importation du fichier. Vérifiez le format du fichier.');
+      }
+    };
+    reader.onerror = () => {
+      this._showModal('error', 'Erreur lors de la lecture du fichier');
     };
     reader.readAsText(input.files[0]);
   }
