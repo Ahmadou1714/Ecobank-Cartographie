@@ -206,7 +206,9 @@ class App {
       iconSize: [30, 30],
     });
 
-    const marker = L.marker(location.coords, { icon: iconElement }).addTo(this.#map);
+    const marker = L.marker(location.coords, { icon: iconElement }).addTo(
+      this.#map
+    );
     this.#markers.set(location.id, marker); // Stocker le marqueur pour la suppression
 
     marker
@@ -229,7 +231,9 @@ class App {
       className: 'popup',
     }).setContent(`
       <div class="${
-        location.type === 'agence' ? 'popup-content-agence' : 'popup-content-xpress'
+        location.type === 'agence'
+          ? 'popup-content-agence'
+          : 'popup-content-xpress'
       }">
         <strong>${location.nom}</strong><br>
         <ion-icon name="location-outline"></ion-icon> ${location.adresse}<br>
@@ -311,6 +315,15 @@ class App {
     const updateLocation = e => {
       e.preventDefault();
 
+      // Validation des données
+      if (!inputNom.value || !inputAdresse.value) {
+        this._showModal(
+          'error',
+          'Veuillez remplir tous les champs obligatoires.'
+        );
+        return;
+      }
+
       // Mise à jour des informations de la localisation
       location.nom = inputNom.value;
       location.adresse = inputAdresse.value;
@@ -324,14 +337,11 @@ class App {
         '.location__details .location__value'
       ).textContent = location.adresse;
 
+      form.reset(); // Réinitialisation du formulaire
       form.classList.add('hidden');
-      form.reset();
 
       // Sauvegarde dans le localStorage
       this._setLocalStorage();
-
-      // Suppression de l'événement de mise à jour pour éviter les duplications
-      form.removeEventListener('submit', updateLocation);
 
       // Réattache l'événement pour ajouter une nouvelle agence
       form.addEventListener('submit', this._newAgenceXpress.bind(this));
@@ -344,7 +354,7 @@ class App {
     const locationEl = e.target.closest('.location-container');
     const locationId = locationEl.querySelector('.location').dataset.id;
     const location = this.#locations.find(loc => loc.id === +locationId);
-    
+
     if (confirm(`Êtes-vous sûr de vouloir supprimer ${location.nom} ?`)) {
       // Supprimer le marqueur de la carte
       const marker = this.#markers.get(+locationId);
@@ -475,7 +485,10 @@ class App {
         this._setLocalStorage();
         this._showModal('success', 'Données importées avec succès');
       } catch (error) {
-        this._showModal('error', 'Erreur lors de l\'importation du fichier. Vérifiez le format du fichier.');
+        this._showModal(
+          'error',
+          "Erreur lors de l'importation du fichier. Vérifiez le format du fichier."
+        );
       }
     };
     reader.onerror = () => {
